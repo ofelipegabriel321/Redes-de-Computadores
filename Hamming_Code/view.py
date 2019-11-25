@@ -1,9 +1,18 @@
 class View:
     def message_building_menu(self):
-        option = int(input("\n*---+++ MESSAGE BUILDING MENU +++---*"
-                           "\n| 1 - Insert new bit sequence       |"
-                           "\n| 0 - Exit                          |"
-                           "\n*-----------------------------------*"
+        option = int(input("\n*----------------+++ MESSAGE BUILDING MENU +++----------------*"
+                           "\n| 1 - Insert new bit sequence                                 |"
+                           "\n| 0 - Exit                                                    |"
+                           "\n*-------------------------------------------------------------*"
+                           "\nInsert an option: "))
+        return option
+    
+    def received_message_menu(self):
+        option = int(input("\n*----------------+++ RECEIVED MESSAGE MENU +++----------------*"
+                           "\n| 1 - Cause, detect and correct an error in the bit sequence  |"
+                           "\n| 2 - Check received bit sequence (not including errors)      |"
+                           "\n| 0 - Exit to message building menu                           |"
+                           "\n*-------------------------------------------------------------*"
                            "\nInsert an option: "))
         return option
 

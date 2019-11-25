@@ -17,3 +17,6 @@ class View:
     
     def enter_to_associate_parity_bits_and_data_bits(self):
         input("\nPress ENTER to associate parity bits and data bits...")
+    
+    def enter_to_calculate_parity_bit_values(self):
+        input("\nPress ENTER to calculate parity bit values...")

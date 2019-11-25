@@ -1,8 +1,8 @@
 class BitSequenceHandler:
-    def __init__(self, initial_bit_sequence):
+    def __init__(self, initial_bit_sequence, parity):
         self.initial_bit_sequence = initial_bit_sequence
         self.final_bit_sequence = None
-        self.parity = None
+        self.parity = parity
         self.parity_bits_associated_with_data_bits = None
 
     def generate_data_bits_and_parity_bits(self):
@@ -41,3 +41,26 @@ class BitSequenceHandler:
 
                         if data_bit_index_aux == 0:
                             break
+    
+    def calculate_parity_bit_values(self):
+        next_parity_bit = 1
+        while next_parity_bit in self.parity_bits_associated_with_data_bits:
+            comparison_value_with_parity = 0
+
+            for data_bit_index in self.parity_bits_associated_with_data_bits[next_parity_bit]:
+                comparison_value_with_parity += self.parity_bits_associated_with_data_bits[next_parity_bit][data_bit_index]
+            
+            if self.parity is 'par':
+                if comparison_value_with_parity % 2:
+                    self.final_bit_sequence[next_parity_bit - 1] = 1
+                else:
+                    self.final_bit_sequence[next_parity_bit - 1] = 0
+            if self.parity is 'impar':
+                if comparison_value_with_parity % 2:
+                    self.final_bit_sequence[next_parity_bit - 1] = 0
+                else:
+                    self.final_bit_sequence[next_parity_bit - 1] = 1
+
+            next_parity_bit *= 2
+
+

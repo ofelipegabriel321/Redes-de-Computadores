@@ -1,7 +1,7 @@
 class View:
     def message_building_menu(self):
         option = int(input("\n*----------------+++ MESSAGE BUILDING MENU +++----------------*"
-                           "\n| 1 - Insert new bit sequence                                 |"
+                           "\n| 1 - Insert new bit sequence and parity                      |"
                            "\n| 0 - Exit                                                    |"
                            "\n*-------------------------------------------------------------*"
                            "\nInsert an option: "))

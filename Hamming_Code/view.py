@@ -16,6 +16,10 @@ class View:
                            "\nInsert an option: "))
         return option
 
+    def invalid_option_message(self):
+        input("\nInvalid option!\n"
+              "\nPress ENTER to continue ...")
+
     def insert_bit_sequence(self):
         bit_sequence = input("\nInsert the bit sequence: ")
         return bit_sequence

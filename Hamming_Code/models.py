@@ -50,12 +50,12 @@ class BitSequenceHandler:
             for data_bit_index in self.parity_bits_associated_with_data_bits[next_parity_bit]:
                 comparison_value_with_parity += self.parity_bits_associated_with_data_bits[next_parity_bit][data_bit_index]
             
-            if self.parity is 'pair':
+            if self.parity == 'pair':
                 if comparison_value_with_parity % 2:
                     self.final_bit_sequence[next_parity_bit - 1] = 1
                 else:
                     self.final_bit_sequence[next_parity_bit - 1] = 0
-            if self.parity is 'odd':
+            if self.parity == 'odd':
                 if comparison_value_with_parity % 2:
                     self.final_bit_sequence[next_parity_bit - 1] = 0
                 else:

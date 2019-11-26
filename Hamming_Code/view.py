@@ -19,6 +19,10 @@ class View:
     def insert_bit_sequence(self):
         bit_sequence = input("\nInsert the bit sequence: ")
         return bit_sequence
+
+    def insert_parity(self):
+        parity = input("\nInsert parity (pair or odd): ")
+        return parity
     
     def enter_to_generate_data_bits_and_parity_bits(self):
         input("\nPress ENTER to generate data bits and parity bits of the final"

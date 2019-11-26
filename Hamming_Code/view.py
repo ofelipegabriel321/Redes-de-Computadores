@@ -1,4 +1,11 @@
 class View:
+    def color_text(self, color):
+        color_palette = {"standart color": "\033[0m",
+                         "red": "\033[31m",
+                         "yellow": "\033[33m",
+                         "blue": "\033[34m"}
+        return color_palette[color]
+
     def message_building_menu(self):
         option = int(input("\n*----------------+++ MESSAGE BUILDING MENU +++----------------*"
                            "\n| 1 - Insert new bit sequence and parity                      |"

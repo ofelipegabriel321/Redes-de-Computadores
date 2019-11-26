@@ -44,3 +44,45 @@ class View:
     
     def enter_to_calculate_parity_bit_values(self):
         input("\nPress ENTER to calculate parity bit values...")
+
+    def display_bit_sequence_handler_attributes(self, initial_bit_sequence=False,
+                                                final_bit_sequence=False,
+                                                parity=False,
+                                                parity_bits_associated_with_data_bits=False):
+        bit_sequence_handler_attributes = ""
+        
+        if initial_bit_sequence != False:
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Initial bit sequence:\n" + self.color_text('standart color')
+            for bit_index in range(len(initial_bit_sequence)):
+                if bit_index != 0:
+                    bit_sequence_handler_attributes += ' ' + str(initial_bit_sequence[bit_index])
+                else:
+                    bit_sequence_handler_attributes += str(initial_bit_sequence[bit_index])
+        
+        if final_bit_sequence != False:
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Final bit sequence:\n" + self.color_text('standart color')
+            next_parity_bit = 1
+            for bit_index in range(len(final_bit_sequence)):
+                if bit_index != 0:
+                    if bit_index + 1 == next_parity_bit:
+                        bit_sequence_handler_attributes += ' ' + self.color_text('red') + str(final_bit_sequence[bit_index]) + self.color_text('standart color')
+                        next_parity_bit *= 2
+                    else:
+                        bit_sequence_handler_attributes += ' ' + str(final_bit_sequence[bit_index])
+                else:
+                    bit_sequence_handler_attributes += self.color_text('red') + str(final_bit_sequence[bit_index]) + self.color_text('standart color')
+                    next_parity_bit *= 2
+
+        if parity != False:
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Parity:\n" + self.color_text('standart color') + parity
+        
+        if parity_bits_associated_with_data_bits != False:
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Parity bits associated with data bits:\n" + self.color_text('standart color')
+            for parity_bit_index in sorted(parity_bits_associated_with_data_bits):
+                bit_sequence_handler_attributes += self.color_text('red') + str(parity_bit_index) + self.color_text('standart color')
+                for data_bit_index in sorted(parity_bits_associated_with_data_bits[parity_bit_index]):
+                    bit_sequence_handler_attributes += '  ' + self.color_text('blue') + str(data_bit_index) + self.color_text('standart color') + ':'
+                    bit_sequence_handler_attributes += str(parity_bits_associated_with_data_bits[parity_bit_index][data_bit_index])
+                bit_sequence_handler_attributes += "\n"
+        
+        print(bit_sequence_handler_attributes)

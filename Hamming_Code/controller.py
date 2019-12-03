@@ -14,10 +14,15 @@ class HammingCodeController:
                 continue
 
             if option == 1:
-                bit_sequence = self.view.insert_bit_sequence()
+                try:
+                    bit_sequence = int(self.view.insert_bit_sequence())
+                except:
+                    self.view.invalid_bit_sequence_message()
+                    continue
+
                 parity = self.view.insert_parity()
 
-                bit_sequence = list(bit_sequence)
+                bit_sequence = list(str(bit_sequence))
                 for bit_index in range(len(bit_sequence)):
                     bit_sequence[bit_index] = Bit(bit_value=int(bit_sequence[bit_index]), is_parity_bit=False)
 

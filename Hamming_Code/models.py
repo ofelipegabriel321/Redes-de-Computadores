@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 class Bit:
     def __init__(self, bit_value, is_parity_bit):
         self.bit_value = bit_value

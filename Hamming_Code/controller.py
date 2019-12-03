@@ -7,8 +7,11 @@ class HammingCodeController:
 
     def run(self):
         while True:
-            option = int(self.view.message_building_menu())
-            
+            try:
+                option = int(self.view.message_building_menu())
+            except:
+                self.view.invalid_option_message()
+                continue
 
             if option == 1:
                 bit_sequence = self.view.insert_bit_sequence()

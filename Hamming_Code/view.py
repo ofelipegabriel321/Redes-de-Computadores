@@ -11,20 +11,24 @@ class View:
         return color_palette[color]
 
     def message_building_menu(self):
-        option = int(input("\n*----------------+++ MESSAGE BUILDING MENU +++----------------*"
+        option = int(input(self.color_text("yellow") + ""
+                           "\n*----------------+++ MESSAGE BUILDING MENU +++----------------*"
                            "\n| 1 - Insert new bit sequence and parity                      |"
                            "\n| 0 - Exit                                                    |"
                            "\n*-------------------------------------------------------------*"
-                           "\nInsert an option: "))
+                           "\nInsert an option: "
+                           "" + self.color_text("standart color")))
         return option
     
     def received_message_menu(self):
-        option = int(input("\n*----------------+++ RECEIVED MESSAGE MENU +++----------------*"
+        option = int(input(self.color_text("yellow") + ""
+                           "\n*----------------+++ RECEIVED MESSAGE MENU +++----------------*"
                            "\n| 1 - Cause, detect and correct an error in the bit sequence  |"
                            "\n| 2 - Check received bit sequence (not including errors)      |"
                            "\n| 0 - Exit to message building menu                           |"
                            "\n*-------------------------------------------------------------*"
-                           "\nInsert an option: "))
+                           "\nInsert an option: "
+                           "" + self.color_text("standart color")))
         return option
 
     def invalid_option_message(self):
@@ -67,7 +71,7 @@ class View:
         bit_sequence_handler_attributes = ""
         
         if initial_bit_sequence != False:
-            bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Initial bit sequence:\n" + self.color_text('standart color')
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('green') + "Initial bit sequence:\n" + self.color_text('standart color')
             for bit_index in range(len(initial_bit_sequence)):
                 if bit_index != 0:
                     bit_sequence_handler_attributes += ' ' + str(initial_bit_sequence[bit_index].bit_value)
@@ -75,7 +79,7 @@ class View:
                     bit_sequence_handler_attributes += str(initial_bit_sequence[bit_index].bit_value)
         
         if final_bit_sequence != False:
-            bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Final bit sequence:\n" + self.color_text('standart color')
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('green') + "Final bit sequence:\n" + self.color_text('standart color')
             next_parity_bit = 1
             for bit_index in range(len(final_bit_sequence)):
                 if bit_index + 1 != bit_sequence_error_index or bit_sequence_error_index == False:
@@ -97,10 +101,10 @@ class View:
                     bit_sequence_handler_attributes += ' '
 
         if parity != False:
-            bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Parity:\n" + self.color_text('standart color') + parity
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('green') + "Parity:\n" + self.color_text('standart color') + parity
         
         if parity_bits_associated_with_data_bits != False:
-            bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Parity bits associated with data bits:\n" + self.color_text('standart color')
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('green') + "Parity bits associated with data bits:\n" + self.color_text('standart color')
             for parity_bit_index in sorted(parity_bits_associated_with_data_bits):
                 bit_sequence_handler_attributes += self.color_text('red') + str(parity_bit_index) + self.color_text('standart color')
                 for data_bit_index in sorted(parity_bits_associated_with_data_bits[parity_bit_index]):

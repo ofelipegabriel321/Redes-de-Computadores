@@ -55,9 +55,9 @@ class View:
             bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Initial bit sequence:\n" + self.color_text('standart color')
             for bit_index in range(len(initial_bit_sequence)):
                 if bit_index != 0:
-                    bit_sequence_handler_attributes += ' ' + str(initial_bit_sequence[bit_index])
+                    bit_sequence_handler_attributes += ' ' + str(initial_bit_sequence[bit_index].bit_value)
                 else:
-                    bit_sequence_handler_attributes += str(initial_bit_sequence[bit_index])
+                    bit_sequence_handler_attributes += str(initial_bit_sequence[bit_index].bit_value)
         
         if final_bit_sequence != False:
             bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Final bit sequence:\n" + self.color_text('standart color')
@@ -65,12 +65,12 @@ class View:
             for bit_index in range(len(final_bit_sequence)):
                 if bit_index != 0:
                     if bit_index + 1 == next_parity_bit:
-                        bit_sequence_handler_attributes += ' ' + self.color_text('red') + str(final_bit_sequence[bit_index]) + self.color_text('standart color')
+                        bit_sequence_handler_attributes += ' ' + self.color_text('red') + str(final_bit_sequence[bit_index].bit_value) + self.color_text('standart color')
                         next_parity_bit *= 2
                     else:
-                        bit_sequence_handler_attributes += ' ' + str(final_bit_sequence[bit_index])
+                        bit_sequence_handler_attributes += ' ' + str(final_bit_sequence[bit_index].bit_value)
                 else:
-                    bit_sequence_handler_attributes += self.color_text('red') + str(final_bit_sequence[bit_index]) + self.color_text('standart color')
+                    bit_sequence_handler_attributes += self.color_text('red') + str(final_bit_sequence[bit_index].bit_value) + self.color_text('standart color')
                     next_parity_bit *= 2
 
         if parity != False:

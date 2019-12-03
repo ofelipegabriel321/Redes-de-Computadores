@@ -1,5 +1,5 @@
 from view import View
-from models import BitSequenceHandler
+from models import Bit, BitSequenceHandler
 
 class HammingCodeController:
     def __init__(self):
@@ -16,7 +16,7 @@ class HammingCodeController:
 
                 bit_sequence = list(bit_sequence)
                 for bit_index in range(len(bit_sequence)):
-                    bit_sequence[bit_index] = int(bit_sequence[bit_index])
+                    bit_sequence[bit_index] = Bit(bit_value=int(bit_sequence[bit_index]), is_parity_bit=False)
 
                 bit_sequence_handler = BitSequenceHandler(initial_bit_sequence=bit_sequence, parity=parity)
                 self.view.display_bit_sequence_handler_attributes(initial_bit_sequence=bit_sequence_handler.initial_bit_sequence,

@@ -80,6 +80,8 @@ class HammingCodeController:
                                                                           bit_sequence_error_index=bit_sequence_error_found_index)
                     elif option == 0:
                         break
+                    else:
+                        self.view.invalid_option_message()
 
             elif option == 0:
                 break

@@ -69,7 +69,14 @@ class HammingCodeController:
 
                     if option == 1:
                         self.view.display_bit_sequence_handler_attributes(final_bit_sequence=bit_sequence_handler.final_bit_sequence)
-                        bit_sequence_error_caused_index = self.view.insert_bit_sequence_error()
+                        try:
+                            bit_sequence_error_caused_index = self.view.insert_bit_sequence_error()
+                            if bit_sequence_error_caused_index == 0 or bit_sequence_error_caused_index > len(bit_sequence_handler.final_bit_sequence):
+                                self.view.invalid_bit_index_message()
+                                continue
+                        except:
+                            self.view.invalid_bit_index_message()
+                            continue
 
                         bit_sequence_handler.cause_or_correct_an_error_in_the_bit_sequence(bit_sequence_error_caused_index)
                         self.view.display_bit_sequence_handler_attributes(final_bit_sequence=bit_sequence_handler.final_bit_sequence,

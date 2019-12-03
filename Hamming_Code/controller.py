@@ -78,7 +78,9 @@ class HammingCodeController:
                         bit_sequence_handler.cause_or_correct_an_error_in_the_bit_sequence(bit_sequence_error_found_index)
                         self.view.display_bit_sequence_handler_attributes(final_bit_sequence=bit_sequence_handler.final_bit_sequence,
                                                                           bit_sequence_error_index=bit_sequence_error_found_index)
-            
+                    elif option == 0:
+                        break
+
             elif option == 0:
                 break
             else:

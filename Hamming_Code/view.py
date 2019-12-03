@@ -71,15 +71,16 @@ class View:
             bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Final bit sequence:\n" + self.color_text('standart color')
             next_parity_bit = 1
             for bit_index in range(len(final_bit_sequence)):
-                if bit_index != 0:
-                    if bit_index + 1 == next_parity_bit:
-                        bit_sequence_handler_attributes += ' ' + self.color_text('red') + str(final_bit_sequence[bit_index].bit_value) + self.color_text('standart color')
-                        next_parity_bit *= 2
-                    else:
-                        bit_sequence_handler_attributes += ' ' + str(final_bit_sequence[bit_index].bit_value)
-                else:
-                    bit_sequence_handler_attributes += self.color_text('red') + str(final_bit_sequence[bit_index].bit_value) + self.color_text('standart color')
+                if bit_index + 1 == next_parity_bit:
+                    bit_sequence_handler_attributes += self.color_text('red')
                     next_parity_bit *= 2
+                else:
+                    bit_sequence_handler_attributes += self.color_text('white')
+                
+                bit_sequence_handler_attributes += str(final_bit_sequence[bit_index].bit_value) + self.color_text('standart color')
+
+                if bit_index != len(final_bit_sequence) - 1:
+                    bit_sequence_handler_attributes += ' '
 
         if parity != False:
             bit_sequence_handler_attributes += "\n\n" + self.color_text('yellow') + "Parity:\n" + self.color_text('standart color') + parity

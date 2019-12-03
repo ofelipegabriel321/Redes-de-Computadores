@@ -68,4 +68,10 @@ class BitSequenceHandler:
 
             next_parity_bit *= 2
 
-
+    def cause_or_correct_an_error_in_the_bit_sequence(self, bit_sequence_error_index):
+        if bit_sequence_error_index == 0:
+            return None
+        elif self.final_bit_sequence[bit_sequence_error_index - 1].bit_value == 1:
+            self.final_bit_sequence[bit_sequence_error_index - 1].bit_value = 0
+        elif self.final_bit_sequence[bit_sequence_error_index - 1].bit_value == 0:
+            self.final_bit_sequence[bit_sequence_error_index - 1].bit_value = 1

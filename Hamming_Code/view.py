@@ -2,8 +2,12 @@ class View:
     def color_text(self, color):
         color_palette = {"standart color": "\033[0m",
                          "red": "\033[0;31;40m",
+                         "green": "\033[0;32;40m",
                          "yellow": "\033[0;33;40m",
-                         "blue": "\033[0;34;40m"}
+                         "blue": "\033[0;34;40m",
+                         "white": "\033[0;37;40m",
+                         "red with underline": "\033[4;31;40m",
+                         "white with underline": "\033[4;37;40m"}
         return color_palette[color]
 
     def message_building_menu(self):

@@ -52,6 +52,9 @@ class View:
     
     def enter_to_calculate_parity_bit_values(self):
         input("\nPress ENTER to calculate parity bit values...")
+    
+    def enter_to_detect_an_error_in_the_bit_sequence(self):
+        input("\nPress ENTER to detect an error in the bit sequence...")
 
     def display_bit_sequence_handler_attributes(self, initial_bit_sequence=False,
                                                 final_bit_sequence=False,

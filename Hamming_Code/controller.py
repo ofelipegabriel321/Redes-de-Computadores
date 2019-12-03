@@ -42,6 +42,19 @@ class HammingCodeController:
                                                                   parity=bit_sequence_handler.parity,
                                                                   parity_bits_associated_with_data_bits=bit_sequence_handler.parity_bits_associated_with_data_bits)
 
+                while True:
+                    bit_sequence_handler.initial_bit_sequence = None
+                    bit_sequence_handler.parity_bits_associated_with_data_bits = None
+                    
+                    try:
+                        option = int(self.view.received_message_menu())
+                    except:
+                        self.view.invalid_option_message()
+                        continue
+
+                    if option == 1:
+                        self.view.display_bit_sequence_handler_attributes(final_bit_sequence=bit_sequence_handler.final_bit_sequence)
+                        bit_sequence_error_caused_index = self.view.insert_bit_sequence_error()
 
             elif option == 0:
                 break

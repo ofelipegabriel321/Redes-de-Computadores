@@ -39,6 +39,10 @@ class View:
         parity = input("\nInsert parity (pair or odd): ")
         return parity
     
+    def insert_bit_sequence_error(self):
+        bit_sequence = int(input("\nInsert the index at which the error occurs in the bit sequence: "))
+        return bit_sequence
+
     def enter_to_generate_data_bits_and_parity_bits(self):
         input("\nPress ENTER to generate data bits and parity bits of the final"
               "message (not yet determining the value of the parity bits)...")

@@ -56,6 +56,9 @@ class View:
     def enter_to_detect_an_error_in_the_bit_sequence(self):
         input("\nPress ENTER to detect an error in the bit sequence...")
 
+    def enter_to_correct_an_error_in_the_bit_sequence(self):
+        input("\nPress ENTER to correct an error in the bit sequence...")
+
     def display_bit_sequence_handler_attributes(self, initial_bit_sequence=False,
                                                 final_bit_sequence=False,
                                                 parity=False,

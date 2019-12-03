@@ -39,6 +39,10 @@ class View:
         input("\nInvalid bit sequence!\n"
               "\nPress ENTER to continue ...")
 
+    def invalid_parity_message(self):
+        input("\nInvalid parity!\n"
+              "\nPress ENTER to continue ...")
+
     def insert_bit_sequence(self):
         bit_sequence = input("\nInsert the bit sequence: ")
         return bit_sequence

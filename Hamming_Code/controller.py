@@ -20,7 +20,14 @@ class HammingCodeController:
                     self.view.invalid_bit_sequence_message()
                     continue
 
-                parity = self.view.insert_parity()
+                try:
+                    parity = self.view.insert_parity()
+                    if parity != "pair" and parity != "odd":
+                        self.view.invalid_parity_message()
+                        continue
+                except:
+                    self.view.invalid_parity_message()
+                    continue
 
                 bit_sequence = list(str(bit_sequence))
                 for bit_index in range(len(bit_sequence)):

@@ -11,24 +11,24 @@ class View:
         return color_palette[color]
 
     def message_building_menu(self):
-        option = int(input(self.color_text("yellow") + ""
-                           "\n*----------------+++ MESSAGE BUILDING MENU +++----------------*"
-                           "\n| 1 - Insert new bit sequence and parity                      |"
-                           "\n| 0 - Exit                                                    |"
-                           "\n*-------------------------------------------------------------*"
-                           "\nInsert an option: "
-                           "" + self.color_text("standart color")))
+        option = input(self.color_text("yellow") + ""
+                       "\n*----------------+++ MESSAGE BUILDING MENU +++----------------*"
+                       "\n| 1 - Insert new bit sequence and parity                      |"
+                       "\n| 0 - Exit                                                    |"
+                       "\n*-------------------------------------------------------------*"
+                       "\nInsert an option: "
+                       "" + self.color_text("standart color"))
         return option
     
     def received_message_menu(self):
-        option = int(input(self.color_text("yellow") + ""
-                           "\n*----------------+++ RECEIVED MESSAGE MENU +++----------------*"
-                           "\n| 1 - Cause, detect and correct an error in the bit sequence  |"
-                           "\n| 2 - Check received bit sequence (not including errors)      |"
-                           "\n| 0 - Exit to message building menu                           |"
-                           "\n*-------------------------------------------------------------*"
-                           "\nInsert an option: "
-                           "" + self.color_text("standart color")))
+        option = input(self.color_text("yellow") + ""
+                       "\n*----------------+++ RECEIVED MESSAGE MENU +++----------------*"
+                       "\n| 1 - Cause, detect and correct an error in the bit sequence  |"
+                       "\n| 2 - Check received bit sequence (not including errors)      |"
+                       "\n| 0 - Exit to message building menu                           |"
+                       "\n*-------------------------------------------------------------*"
+                       "\nInsert an option: "
+                       "" + self.color_text("standart color"))
         return option
 
     def invalid_option_message(self):

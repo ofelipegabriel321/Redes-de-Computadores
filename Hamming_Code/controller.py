@@ -7,7 +7,7 @@ class HammingCodeController:
 
     def run(self):
         while True:
-            option = self.view.message_building_menu()
+            option = int(self.view.message_building_menu())
             
 
             if option == 1:

@@ -32,19 +32,27 @@ class View:
         return option
 
     def invalid_option_message(self):
-        input("\nInvalid option!\n"
+        input(self.color_text("red") + ""
+              "\nInvalid option!\n"
+              "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
 
     def invalid_bit_sequence_message(self):
-        input("\nInvalid bit sequence!\n"
+        input(self.color_text("red") + ""
+              "\nInvalid bit sequence!\n"
+              "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
 
     def invalid_parity_message(self):
-        input("\nInvalid parity!\n"
+        input(self.color_text("red") + ""
+              "\nInvalid parity!\n"
+              "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
 
     def invalid_bit_index_message(self):
-        input("\nInvalid bit index!\n"
+        input(self.color_text("red") + ""
+              "\nInvalid bit index!\n"
+              "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
 
     def insert_bit_sequence(self):

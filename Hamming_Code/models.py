@@ -1,3 +1,8 @@
+class Bit:
+    def __init__(self, bit_value, is_parity_bit):
+        self.bit_value = bit_value
+        self.is_parity_bit = is_parity_bit
+
 class BitSequenceHandler:
     def __init__(self, initial_bit_sequence, parity):
         self.initial_bit_sequence = initial_bit_sequence

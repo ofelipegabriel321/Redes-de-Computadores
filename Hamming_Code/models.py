@@ -75,3 +75,14 @@ class BitSequenceHandler:
             self.final_bit_sequence[bit_sequence_error_index - 1].bit_value = 0
         elif self.final_bit_sequence[bit_sequence_error_index - 1].bit_value == 0:
             self.final_bit_sequence[bit_sequence_error_index - 1].bit_value = 1
+
+    def detect_an_error_in_the_bit_sequence(self):
+        original_final_bit_sequence = deepcopy(self.final_bit_sequence)
+        self.associate_parity_bits_and_data_bits()
+        self.calculate_parity_bit_values()
+        bit_sequence_error_index = 0
+        for bit_index in range(len(self.final_bit_sequence)):
+            if self.final_bit_sequence[bit_index].bit_value != original_final_bit_sequence[bit_index].bit_value:
+                bit_sequence_error_index += bit_index + 1
+        self.final_bit_sequence = original_final_bit_sequence
+        return bit_sequence_error_index

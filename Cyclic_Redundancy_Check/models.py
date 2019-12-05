@@ -18,3 +18,47 @@ class BitSequenceHandler:
             else:
                 xor_result += [1]
         return xor_result
+    
+    def calculate_crc_value(self):
+        dividend = deepcopy(self.final_bit_sequence)
+        available_dividend = list(reversed(dividend))
+        divisor = self.generator_polynomial
+        quotient = []
+        remainder = []
+
+        add_zero_in_quotient = False
+
+        while True:
+            while True:
+                try:
+                    if remainder[0] == 1:
+                        break
+                    else:
+                        remainder = remainder[1:len(remainder)]
+                except:
+                    break
+            while len(remainder) < len(divisor):
+                if available_dividend == []:
+                    quotient += [0]
+                    break
+                remainder.append(available_dividend.pop())
+
+                while len(remainder) < len(divisor):
+                    if available_dividend == []:
+                        if quotient != []:
+                            quotient += [0]
+                        break
+                    remainder.append(available_dividend.pop())
+                    if quotient != []:
+                        quotient += [0]
+                
+                if available_dividend == []:
+                    break
+            if available_dividend == []:
+                break
+            else:
+                quotient += [1]
+                remainder = self.apply_xor(remainder, divisor)
+        remainder = (len(divisor) - 1 - len(remainder)) * [0] + remainder
+        
+        self.crc = remainder

@@ -65,3 +65,9 @@ class BitSequenceHandler:
 
     def encode_final_bit_sequence(self):
         self.final_bit_sequence = self.initial_bit_sequence + self.crc
+
+    def check_final_bit_sequence(self):
+        old_crc = deepcopy(self.crc)
+        if 1 in self.calculate_crc_value():
+            return False
+        return True

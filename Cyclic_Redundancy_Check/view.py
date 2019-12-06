@@ -25,5 +25,4 @@ class View:
     
     def insert_generator(self):
         generator = input("\nInsert the generator: ")
-    
-    
+        return generator

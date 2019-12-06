@@ -47,3 +47,6 @@ class View:
     
     def enter_to_generate_bit_sequence_initial_dividend(self):
         input("\nPress ENTER to generate bit sequence initial dividend...")
+    
+    def enter_to_calculate_crc_value(self):
+        input("\nPress ENTER to calculate crc value...")

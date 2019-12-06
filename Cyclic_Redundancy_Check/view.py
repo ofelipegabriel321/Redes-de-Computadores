@@ -1,5 +1,3 @@
-from models import *
-
 class View:
     
     def color_text(self, color):
@@ -46,3 +44,6 @@ class View:
     def insert_generator(self):
         generator = input("\nInsert the generator: ")
         return generator
+    
+    def enter_to_generate_bit_sequence_initial_dividend(self):
+        input("\nPress ENTER to generate bit sequence initial dividend...")

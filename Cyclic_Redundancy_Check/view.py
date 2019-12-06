@@ -1,3 +1,5 @@
+from models import *
+
 class View:
     
     def color_text(self, color):
@@ -18,6 +20,12 @@ class View:
                        "\nInsert an option: "
                        "" + self.color_text("standart color"))
         return option
+    
+    def invalid_option_message(self):
+        input(self.color_text("red") + ""
+              "\nInvalid option!\n"
+              "" + self.color_text("standart color") + ""
+              "\nPress ENTER to continue ...")
     
     def insert_bit_sequence(self):
         bit_sequence = input("\nInsert the bit sequence: ")

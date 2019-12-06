@@ -1,11 +1,11 @@
 from copy import deepcopy
 
 class BitSequenceHandler:
-    def __init__(self, initial_bit_sequence, generator_polynomial):
+    def __init__(self, initial_bit_sequence, generator):
         self.initial_bit_sequence = initial_bit_sequence
         self.final_bit_sequence = None
-        self.generator_polynomial = generator_polynomial
-        self.crc = [0] * (len(self.generator_polynomial) - 1)
+        self.generator = generator
+        self.crc = [0] * (len(self.generator) - 1)
 
     def generate_bit_sequence_initial_dividend(self):
         self.final_bit_sequence = self.initial_bit_sequence + self.crc
@@ -22,7 +22,7 @@ class BitSequenceHandler:
     def calculate_crc_value(self):
         dividend = deepcopy(self.final_bit_sequence)
         available_dividend = list(reversed(dividend))
-        divisor = self.generator_polynomial
+        divisor = self.generator
         quotient = []
         remainder = []
 

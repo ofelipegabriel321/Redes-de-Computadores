@@ -3,7 +3,7 @@ from copy import deepcopy
 class BitSequenceHandler:
     def __init__(self, initial_bit_sequence, generator):
         self.initial_bit_sequence = initial_bit_sequence
-        self.final_bit_sequence = None
+        self.final_bit_sequence = []
         self.generator = generator
         self.crc = [0] * (len(self.generator) - 1)
 
@@ -67,7 +67,7 @@ class BitSequenceHandler:
         self.final_bit_sequence = self.initial_bit_sequence + self.crc
 
     def check_final_bit_sequence(self):
-        old_crc = deepcopy(self.crc)
-        if 1 in self.calculate_crc_value():
+        self.calculate_crc_value()
+        if 1 in self.crc:
             return False
         return True

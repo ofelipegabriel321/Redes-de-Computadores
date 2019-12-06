@@ -11,3 +11,8 @@ class View:
     def insert_bit_sequence(self):
         bit_sequence = input("\nInsert the bit sequence: ")
         return bit_sequence
+    
+    def insert_generator(self):
+        generator = input("\nInsert the generator: ")
+    
+    

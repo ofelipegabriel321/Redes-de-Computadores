@@ -31,6 +31,12 @@ class View:
               "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
     
+    def invalid_bit_sequence_format_message(self):
+        input(self.color_text("red") + ""
+              "\nInvalid bit sequence format! The bit sequence must start and end with number 1.\n"
+              "" + self.color_text("standart color") + ""
+              "\nPress ENTER to continue ...")
+    
     def invalid_generator_message(self):
         input(self.color_text("red") + ""
               "\nInvalid generator!\n"

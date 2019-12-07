@@ -53,3 +53,44 @@ class View:
     
     def enter_to_encode_final_bit_sequence(self):
         input("\nPress ENTER to encode final bit sequence...")
+
+    def display_bit_sequence_handler_attributes(self, initial_bit_sequence=False,
+                                                final_bit_sequence=False,
+                                                generator=False,
+                                                crc=False,
+                                                bit_sequence_error_indexes=[]):
+        bit_sequence_handler_attributes = ""
+        
+        if initial_bit_sequence != False:
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('green') + "Initial bit sequence:\n" + self.color_text('standart color')
+            for bit_index in range(len(initial_bit_sequence)):
+                if bit_index != 0:
+                    bit_sequence_handler_attributes += ' '
+                bit_sequence_handler_attributes += str(initial_bit_sequence[bit_index])
+        
+        if final_bit_sequence != False:
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('green') + "Final bit sequence:\n" + self.color_text('standart color')
+            for bit_index in range(len(final_bit_sequence)):
+                if bit_index != 0:
+                    bit_sequence_handler_attributes += ' '
+ 
+                if bit_index in bit_sequence_error_indexes:
+                    bit_sequence_handler_attributes += self.color_text('white with underline')
+                
+                bit_sequence_handler_attributes += str(final_bit_sequence[bit_index]) + self.color_text('standart color')
+ 
+        if generator != False:
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('green') + "Generator:\n" + self.color_text('standart color')
+            for bit_index in range(len(generator)):
+                if bit_index != 0:
+                    bit_sequence_handler_attributes += ' '
+                bit_sequence_handler_attributes += str(generator[bit_index])
+        
+        if crc != False:
+            bit_sequence_handler_attributes += "\n\n" + self.color_text('green') + "CRC:\n" + self.color_text('standart color')
+            for bit_index in range(len(crc)):
+                if bit_index != 0:
+                    bit_sequence_handler_attributes += ' '
+                bit_sequence_handler_attributes += str(crc[bit_index])
+        
+        print(bit_sequence_handler_attributes)

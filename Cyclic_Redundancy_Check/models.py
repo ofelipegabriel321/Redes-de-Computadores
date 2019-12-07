@@ -29,6 +29,20 @@ class BitSequenceHandler:
         add_zero_in_quotient = False
 
         while True:
+            if available_dividend == []:
+                if len(remainder) == len(divisor):
+                    quotient += [0]
+                    remainder = self.apply_xor(remainder, divisor)
+                    while True:
+                        try:
+                            if remainder[0] == 1:
+                                break
+                            else:
+                                remainder = remainder[1:len(remainder)]
+                        except:
+                            break
+                break
+            
             while True:
                 try:
                     if remainder[0] == 1:
@@ -54,13 +68,12 @@ class BitSequenceHandler:
                 
                 if available_dividend == []:
                     break
-            if available_dividend == []:
-                break
-            else:
+            
+            if available_dividend != []:
                 quotient += [1]
                 remainder = self.apply_xor(remainder, divisor)
         remainder = (len(divisor) - 1 - len(remainder)) * [0] + remainder
-        
+
         self.crc = remainder
 
     def encode_final_bit_sequence(self):

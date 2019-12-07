@@ -8,7 +8,7 @@ class CyclicRedundancyCheckController:
         self.message_sent = None
         self.message_received = None
     
-    def message_building(self):
+    def build_message(self):
         while True:
             try:
                 option = int(self.view.message_building_menu())
@@ -90,4 +90,4 @@ class CyclicRedundancyCheckController:
 
 
 if __name__ == '__main__':
-    CyclicRedundancyCheckController().message_building()
+    CyclicRedundancyCheckController().build_message()

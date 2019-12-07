@@ -19,6 +19,15 @@ class View:
                        "" + self.color_text("standart color"))
         return option
     
+    def received_message_menu(self):
+        option = input("\n*----------------+++ RECEIVED MESSAGE MENU +++----------------*"
+                       "\n| 1 - Cause or correct an error in the bit sequence           |"
+                       "\n| 2 - Check received bit sequence (not including errors)      |"
+                       "\n| 0 - Exit to message building menu                           |"
+                       "\n*-------------------------------------------------------------*"
+                       "\nInsert an option: ")
+        return option
+    
     def invalid_option_message(self):
         input(self.color_text("red") + ""
               "\nInvalid option!\n"

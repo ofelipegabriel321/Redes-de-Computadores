@@ -50,3 +50,6 @@ class View:
     
     def enter_to_calculate_crc_value(self):
         input("\nPress ENTER to calculate crc value...")
+    
+    def enter_to_encode_final_bit_sequence(self):
+        input("\nPress ENTER to encode final bit sequence...")

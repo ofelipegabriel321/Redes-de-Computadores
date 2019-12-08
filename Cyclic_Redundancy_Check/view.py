@@ -121,3 +121,12 @@ class View:
                 bit_sequence_handler_attributes += str(crc[bit_index])
         
         print(bit_sequence_handler_attributes)
+    
+    def display_check_report(self, check_result, absolute_check_result):
+        if check_result is True:
+            if absolute_check_result is True:
+                print("\nThe check resulted in positive")
+            else:
+                print("\nThe check resulted in false positive")
+        else:
+            print("\nThe check resulted in negative")

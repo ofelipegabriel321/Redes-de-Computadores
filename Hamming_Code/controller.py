@@ -86,17 +86,7 @@ class HammingCodeController:
                             self.bit_sequence_error_indexes.remove(bit_sequence_error_caused_index - 1)
                         self.view.display_bit_sequence_handler_attributes(final_bit_sequence=bit_sequence_handler.final_bit_sequence,
                                                                           bit_sequence_error_indexes=self.bit_sequence_error_indexes)
-                        
-                        self.view.enter_to_detect_an_error_in_the_bit_sequence()
-                        bit_sequence_error_found_index = bit_sequence_handler.detect_an_error_in_the_bit_sequence()
-                        self.view.display_an_error_in_the_bit_sequence(bit_sequence_error_found_index)
-
-                        self.view.enter_to_correct_an_error_in_the_bit_sequence()
-                        bit_sequence_handler.cause_or_correct_an_error_in_the_bit_sequence(bit_sequence_error_found_index)
-                        self.bit_sequence_error_indexes = []
-                        self.view.display_bit_sequence_handler_attributes(final_bit_sequence=bit_sequence_handler.final_bit_sequence,
-                                                                          bit_sequence_error_indexes=self.bit_sequence_error_indexes)
-
+                    
                     elif option == 2:
                         self.view.enter_to_detect_an_error_in_the_bit_sequence()
                         bit_sequence_error_found_index = bit_sequence_handler.detect_an_error_in_the_bit_sequence()
@@ -107,6 +97,7 @@ class HammingCodeController:
                         self.bit_sequence_error_indexes = []
                         self.view.display_bit_sequence_handler_attributes(final_bit_sequence=bit_sequence_handler.final_bit_sequence,
                                                                           bit_sequence_error_indexes=self.bit_sequence_error_indexes)
+                    
                     elif option == 0:
                         break
                     else:

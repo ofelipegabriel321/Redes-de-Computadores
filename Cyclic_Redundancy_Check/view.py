@@ -66,6 +66,10 @@ class View:
         generator = input("\nInsert the generator: ")
         return generator
     
+    def insert_bit_sequence_error(self):
+        bit_sequence = int(input("\nInsert the index at which the error occurs in the bit sequence: "))
+        return bit_sequence
+    
     def enter_to_generate_bit_sequence_initial_dividend(self):
         input("\nPress ENTER to generate bit sequence initial dividend...")
     

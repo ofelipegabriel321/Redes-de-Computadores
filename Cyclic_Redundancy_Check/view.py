@@ -23,7 +23,7 @@ class View:
         option = input(self.color_text("yellow") + ""
                        "\n*----------------+++ RECEIVED MESSAGE MENU +++----------------*"
                        "\n| 1 - Cause or correct an error in the bit sequence           |"
-                       "\n| 2 - Check received bit sequence (not including errors)      |"
+                       "\n| 2 - Check received bit sequence                             |"
                        "\n| 0 - Exit to message building menu                           |"
                        "\n*-------------------------------------------------------------*"
                        "\nInsert an option: "

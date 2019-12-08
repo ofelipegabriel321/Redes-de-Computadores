@@ -136,3 +136,12 @@ class View:
     
     def display_an_error_in_the_bit_sequence(self, bit_sequence_error_index):
         print("\nThe error occurred at bit", bit_sequence_error_index)
+    
+    def display_check_report(self, check_result, absolute_check_result):
+        if check_result is True:
+            if absolute_check_result is True:
+                print("\nThe check resulted in positive")
+            else:
+                print("\nThe check resulted in false positive")
+        else:
+            print("\nThe check resulted in negative")

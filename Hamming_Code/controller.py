@@ -21,7 +21,8 @@ class HammingCodeController:
                 continue
             
             if option == 1:
-                self.view.display_bit_sequence_handler_attributes(final_bit_sequence=self.message_received.final_bit_sequence)
+                self.view.display_bit_sequence_handler_attributes(final_bit_sequence=self.message_received.final_bit_sequence,
+                                                                  bit_sequence_error_indexes=self.bit_sequence_error_indexes)
                 try:
                     bit_sequence_error_caused_index = self.view.insert_bit_sequence_error()
                     if bit_sequence_error_caused_index == 0 or bit_sequence_error_caused_index > len(self.message_received.final_bit_sequence):
@@ -43,12 +44,29 @@ class HammingCodeController:
                 self.view.enter_to_detect_an_error_in_the_bit_sequence()
                 bit_sequence_error_found_index = self.message_received.detect_an_error_in_the_bit_sequence()
                 self.view.display_an_error_in_the_bit_sequence(bit_sequence_error_found_index)
-            
+                
                 self.view.enter_to_correct_an_error_in_the_bit_sequence()
+                
+                absolute_check_result = True
+                if len(self.bit_sequence_error_indexes) > 1:
+                    absolute_check_result = False
+                
+                check_result = True
+                if bit_sequence_error_found_index != 0:
+                    check_result = False
+                
+                self.view.display_check_report(check_result, absolute_check_result)
+                
                 self.message_received.cause_or_correct_an_error_in_the_bit_sequence(bit_sequence_error_found_index)
-                self.bit_sequence_error_indexes = []
+                if absolute_check_result is True:
+                    self.bit_sequence_error_indexes = []
+                else:
+                    if not((bit_sequence_error_found_index -1) in self.bit_sequence_error_indexes):
+                        self.bit_sequence_error_indexes.append(bit_sequence_error_found_index - 1)
+                    else:
+                        self.bit_sequence_error_indexes.remove(bit_sequence_error_found_index - 1)
                 self.view.display_bit_sequence_handler_attributes(final_bit_sequence=self.message_received.final_bit_sequence,
-                                                                    bit_sequence_error_indexes=self.bit_sequence_error_indexes)
+                                                                  bit_sequence_error_indexes=self.bit_sequence_error_indexes)
             
             elif option == 0:
                 break

@@ -9,7 +9,7 @@ class View:
                          "red with underline": "\033[4;31;40m",
                          "white with underline": "\033[4;37;40m"}
         return color_palette[color]
-
+    
     def message_building_menu(self):
         option = input(self.color_text("yellow") + ""
                        "\n*----------------+++ MESSAGE BUILDING MENU +++----------------*"
@@ -30,35 +30,35 @@ class View:
                        "\nInsert an option: "
                        "" + self.color_text("standart color"))
         return option
-
+    
     def invalid_option_message(self):
         input(self.color_text("red") + ""
               "\nInvalid option!\n"
               "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
-
+    
     def invalid_bit_sequence_message(self):
         input(self.color_text("red") + ""
               "\nInvalid bit sequence!\n"
               "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
-
+    
     def invalid_parity_message(self):
         input(self.color_text("red") + ""
               "\nInvalid parity!\n"
               "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
-
+    
     def invalid_bit_index_message(self):
         input(self.color_text("red") + ""
               "\nInvalid bit index!\n"
               "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
-
+    
     def insert_bit_sequence(self):
         bit_sequence = input("\nInsert the bit sequence: ")
         return bit_sequence
-
+    
     def insert_parity(self):
         parity = input("\nInsert parity (pair or odd): ")
         return parity
@@ -66,7 +66,7 @@ class View:
     def insert_bit_sequence_error(self):
         bit_sequence = int(input("\nInsert the index at which the error occurs in the bit sequence: "))
         return bit_sequence
-
+    
     def enter_to_generate_data_bits_and_parity_bits(self):
         input("\nPress ENTER to generate data bits and parity bits of the final"
               "message (not yet determining the value of the parity bits)...")
@@ -76,18 +76,18 @@ class View:
     
     def enter_to_calculate_parity_bit_values(self):
         input("\nPress ENTER to calculate parity bit values...")
-
+    
     def enter_to_detect_an_error_in_the_bit_sequence(self):
         input("\nPress ENTER to detect an error in the bit sequence...")
-
+    
     def enter_to_correct_an_error_in_the_bit_sequence(self):
         input("\nPress ENTER to correct an error in the bit sequence...")
-
+    
     def display_bit_sequence_handler_attributes(self, initial_bit_sequence=False,
                                                 final_bit_sequence=False,
                                                 parity=False,
                                                 parity_bits_associated_with_data_bits=False,
-                                                bit_sequence_error_index=False):
+                                                bit_sequence_error_indexes=[]):
         bit_sequence_handler_attributes = ""
         
         if initial_bit_sequence != False:
@@ -102,24 +102,24 @@ class View:
             bit_sequence_handler_attributes += "\n\n" + self.color_text('green') + "Final bit sequence:\n" + self.color_text('standart color')
             next_parity_bit = 1
             for bit_index in range(len(final_bit_sequence)):
-                if bit_index + 1 != bit_sequence_error_index or bit_sequence_error_index == False:
-                    if bit_index + 1 == next_parity_bit:
-                        bit_sequence_handler_attributes += self.color_text('red')
-                        next_parity_bit *= 2
-                    else:
-                        bit_sequence_handler_attributes += self.color_text('white')
-                else:
+                if bit_index != 0:
+                    bit_sequence_handler_attributes += ' '
+                
+                if bit_index in bit_sequence_error_indexes:
                     if bit_index + 1 == next_parity_bit:
                         bit_sequence_handler_attributes += self.color_text('red with underline')
                         next_parity_bit *= 2
                     else:
                         bit_sequence_handler_attributes += self.color_text('white with underline')
+                else:
+                    if bit_index + 1 == next_parity_bit:
+                        bit_sequence_handler_attributes += self.color_text('red')
+                        next_parity_bit *= 2
+                    else:
+                        bit_sequence_handler_attributes += self.color_text('white')
                 
                 bit_sequence_handler_attributes += str(final_bit_sequence[bit_index].bit_value) + self.color_text('standart color')
-
-                if bit_index != len(final_bit_sequence) - 1:
-                    bit_sequence_handler_attributes += ' '
-
+        
         if parity != False:
             bit_sequence_handler_attributes += "\n\n" + self.color_text('green') + "Parity:\n" + self.color_text('standart color') + parity
         
@@ -133,6 +133,6 @@ class View:
                 bit_sequence_handler_attributes += "\n"
         
         print(bit_sequence_handler_attributes)
-
+    
     def display_an_error_in_the_bit_sequence(self, bit_sequence_error_index):
         print("\nThe error occurred at bit", bit_sequence_error_index)

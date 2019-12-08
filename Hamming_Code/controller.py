@@ -57,7 +57,6 @@ class HammingCodeController:
                 
                 self.view.display_check_report(check_result, absolute_check_result)
                 
-                self.message_received.cause_or_correct_an_error_in_the_bit_sequence(bit_sequence_error_found_index)
                 if absolute_check_result is True:
                     self.bit_sequence_error_indexes = []
                 else:
@@ -65,6 +64,11 @@ class HammingCodeController:
                         self.bit_sequence_error_indexes.append(bit_sequence_error_found_index - 1)
                     else:
                         self.bit_sequence_error_indexes.remove(bit_sequence_error_found_index - 1)
+                
+                if bit_sequence_error_found_index > len(self.message_received.final_bit_sequence):
+                    self.view.invalid_bit_correction_message()
+                    continue
+                self.message_received.cause_or_correct_an_error_in_the_bit_sequence(bit_sequence_error_found_index)
                 self.view.display_bit_sequence_handler_attributes(final_bit_sequence=self.message_received.final_bit_sequence,
                                                                   bit_sequence_error_indexes=self.bit_sequence_error_indexes)
             

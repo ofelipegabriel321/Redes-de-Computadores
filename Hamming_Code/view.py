@@ -55,6 +55,12 @@ class View:
               "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
     
+    def invalid_bit_correction_message(self):
+        input(self.color_text("red") + ""
+              "\nInvalid bit correction! Bit out of range.\n"
+              "" + self.color_text("standart color") + ""
+              "\nPress ENTER to continue ...")
+    
     def insert_bit_sequence(self):
         bit_sequence = input("\nInsert the bit sequence: ")
         return bit_sequence

@@ -23,8 +23,8 @@ class View:
     def received_message_menu(self):
         option = input(self.color_text("yellow") + ""
                        "\n*----------------+++ RECEIVED MESSAGE MENU +++----------------*"
-                       "\n| 1 - Cause, detect and correct an error in the bit sequence  |"
-                       "\n| 2 - Check received bit sequence (not including errors)      |"
+                       "\n| 1 - Cause or correct an error in the bit sequence           |"
+                       "\n| 2 - Check and try correct the bit sequence                  |"
                        "\n| 0 - Exit to message building menu                           |"
                        "\n*-------------------------------------------------------------*"
                        "\nInsert an option: "
@@ -52,6 +52,12 @@ class View:
     def invalid_bit_index_message(self):
         input(self.color_text("red") + ""
               "\nInvalid bit index!\n"
+              "" + self.color_text("standart color") + ""
+              "\nPress ENTER to continue ...")
+    
+    def invalid_bit_correction_message(self):
+        input(self.color_text("red") + ""
+              "\nInvalid bit correction! Bit out of range.\n"
               "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
     
@@ -136,3 +142,12 @@ class View:
     
     def display_an_error_in_the_bit_sequence(self, bit_sequence_error_index):
         print("\nThe error occurred at bit", bit_sequence_error_index)
+    
+    def display_check_report(self, check_result, absolute_check_result):
+        if check_result is True:
+            if absolute_check_result is True:
+                print("\nThe check resulted in positive")
+            else:
+                print("\nThe check resulted in false positive")
+        else:
+            print("\nThe check resulted in negative")

@@ -19,6 +19,17 @@ class View:
                        "" + self.color_text("standart color"))
         return option
     
+    def received_message_menu(self):
+        option = input(self.color_text("yellow") + ""
+                       "\n*----------------+++ RECEIVED MESSAGE MENU +++----------------*"
+                       "\n| 1 - Cause or correct an error in the bit sequence           |"
+                       "\n| 2 - Check received bit sequence                             |"
+                       "\n| 0 - Exit to message building menu                           |"
+                       "\n*-------------------------------------------------------------*"
+                       "\nInsert an option: "
+                       "" + self.color_text("standart color"))
+        return option
+    
     def invalid_option_message(self):
         input(self.color_text("red") + ""
               "\nInvalid option!\n"
@@ -43,6 +54,12 @@ class View:
               "" + self.color_text("standart color") + ""
               "\nPress ENTER to continue ...")
     
+    def invalid_bit_index_message(self):
+        input(self.color_text("red") + ""
+              "\nInvalid bit index!\n"
+              "" + self.color_text("standart color") + ""
+              "\nPress ENTER to continue ...")
+    
     def insert_bit_sequence(self):
         bit_sequence = input("\nInsert the bit sequence: ")
         return bit_sequence
@@ -50,6 +67,10 @@ class View:
     def insert_generator(self):
         generator = input("\nInsert the generator: ")
         return generator
+    
+    def insert_bit_sequence_error(self):
+        bit_sequence = int(input("\nInsert the index at which the error occurs in the bit sequence: "))
+        return bit_sequence
     
     def enter_to_generate_bit_sequence_initial_dividend(self):
         input("\nPress ENTER to generate bit sequence initial dividend...")
@@ -100,3 +121,12 @@ class View:
                 bit_sequence_handler_attributes += str(crc[bit_index])
         
         print(bit_sequence_handler_attributes)
+    
+    def display_check_report(self, check_result, absolute_check_result):
+        if check_result is True:
+            if absolute_check_result is True:
+                print("\nThe check resulted in positive")
+            else:
+                print("\nThe check resulted in false positive")
+        else:
+            print("\nThe check resulted in negative")

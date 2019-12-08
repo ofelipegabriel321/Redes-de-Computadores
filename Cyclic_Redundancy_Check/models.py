@@ -78,6 +78,14 @@ class BitSequenceHandler:
 
     def encode_final_bit_sequence(self):
         self.final_bit_sequence = self.initial_bit_sequence + self.crc
+    
+    def cause_or_correct_an_error_in_the_bit_sequence(self, bit_sequence_error_index):
+        if bit_sequence_error_index == 0:
+            return None
+        elif self.final_bit_sequence[bit_sequence_error_index - 1] == 1:
+            self.final_bit_sequence[bit_sequence_error_index - 1] = 0
+        elif self.final_bit_sequence[bit_sequence_error_index - 1] == 0:
+            self.final_bit_sequence[bit_sequence_error_index - 1] = 1
 
     def check_final_bit_sequence(self):
         self.calculate_crc_value()

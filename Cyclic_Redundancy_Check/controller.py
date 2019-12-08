@@ -7,6 +7,7 @@ class CyclicRedundancyCheckController:
         self.view = View()
         self.message_sent = None
         self.message_received = None
+        self.bit_sequence_error_indexes = []
     
     def build_message(self):
         while True:
@@ -58,30 +59,30 @@ class CyclicRedundancyCheckController:
                     self.view.invalid_generator_message()
                     continue
                 
-                message_sent = BitSequenceHandler(initial_bit_sequence=bit_sequence, generator=generator) #[1, 1, 1, 1, 0, 0, 1, 0, 1], [1, 0, 1, 1, 0, 1])
-                self.view.display_bit_sequence_handler_attributes(initial_bit_sequence=message_sent.initial_bit_sequence,
-                                                                  generator=message_sent.generator)
+                self.message_sent = BitSequenceHandler(initial_bit_sequence=bit_sequence, generator=generator) #[1, 1, 1, 1, 0, 0, 1, 0, 1], [1, 0, 1, 1, 0, 1])
+                self.view.display_bit_sequence_handler_attributes(initial_bit_sequence=self.message_sent.initial_bit_sequence,
+                                                                  generator=self.message_sent.generator)
                 
                 self.view.enter_to_generate_bit_sequence_initial_dividend()
-                message_sent.generate_bit_sequence_initial_dividend()
-                self.view.display_bit_sequence_handler_attributes(initial_bit_sequence=message_sent.initial_bit_sequence,
-                                                                  final_bit_sequence=message_sent.final_bit_sequence,
-                                                                  generator=message_sent.generator)
+                self.message_sent.generate_bit_sequence_initial_dividend()
+                self.view.display_bit_sequence_handler_attributes(initial_bit_sequence=self.message_sent.initial_bit_sequence,
+                                                                  final_bit_sequence=self.message_sent.final_bit_sequence,
+                                                                  generator=self.message_sent.generator)
                 
                 self.view.enter_to_calculate_crc_value()
-                message_sent.calculate_crc_value()
-                self.view.display_bit_sequence_handler_attributes(initial_bit_sequence=message_sent.initial_bit_sequence,
-                                                                  final_bit_sequence=message_sent.final_bit_sequence,
-                                                                  generator=message_sent.generator,
-                                                                  crc=message_sent.crc)
+                self.message_sent.calculate_crc_value()
+                self.view.display_bit_sequence_handler_attributes(initial_bit_sequence=self.message_sent.initial_bit_sequence,
+                                                                  final_bit_sequence=self.message_sent.final_bit_sequence,
+                                                                  generator=self.message_sent.generator,
+                                                                  crc=self.message_sent.crc)
                 
                 self.view.enter_to_encode_final_bit_sequence()
-                message_sent.encode_final_bit_sequence()
-                self.view.display_bit_sequence_handler_attributes(initial_bit_sequence=message_sent.initial_bit_sequence,
-                                                                  final_bit_sequence=message_sent.final_bit_sequence,
-                                                                  generator=message_sent.generator,
-                                                                  crc=message_sent.crc)
-            
+                self.message_sent.encode_final_bit_sequence()
+                self.view.display_bit_sequence_handler_attributes(initial_bit_sequence=self.message_sent.initial_bit_sequence,
+                                                                  final_bit_sequence=self.message_sent.final_bit_sequence,
+                                                                  generator=self.message_sent.generator,
+                                                                  crc=self.message_sent.crc)
+                
             
             elif option == 0:
                 break
